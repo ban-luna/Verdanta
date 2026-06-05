@@ -175,6 +175,9 @@
             .hero-title { font-size: 32px; }
         }
     </style>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init('5oYqYy-PU0swId5Rz');</script>
 </head>
 <body>
 
@@ -1506,14 +1509,24 @@
             e.preventDefault();
             const body = {
                 sensores:   formEncuesta.querySelector('select').value,
-                tina_ok:    formEncuesta.querySelector('[name="p2"]:checked')?.value || '',
+                tina_ok:    formEncuesta.querySelector('[name="p2"]:checked')?.value || 'No contestó',
                 usaria:     formEncuesta.querySelectorAll('select')[1]?.value || '',
-                comentario: formEncuesta.querySelector('textarea').value,
+                comentario: formEncuesta.querySelector('textarea').value || 'Sin comentario',
             };
             try {
+                // Guardar en Supabase
                 const { data, error } = await sb.from('encuestas').insert(body).select().single();
                 if (error) throw error;
-                alert('¡Gracias por tu opinión! 🌱 (ID: ' + data.id + ')');
+
+                // Mandar correo con EmailJS
+                await emailjs.send('service_og7j2j1', 'template_7agxuza', {
+                    sensores:   body.sensores,
+                    tina_ok:    body.tina_ok,
+                    usaria:     body.usaria,
+                    comentario: body.comentario,
+                });
+
+                alert('¡Gracias por tu opinión! 🌱 Respuesta guardada.');
                 formEncuesta.reset();
             } catch(e) {
                 alert('¡Gracias por tu opinión! 🌱');
