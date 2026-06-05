@@ -240,6 +240,11 @@
                             <i class="bi bi-gear me-1"></i>Admin API
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-legal" onclick="goTo('legal')" href="#">
+                            <i class="bi bi-shield-check me-1"></i>Aviso Legal
+                        </a>
+                    </li>
                     <li class="nav-item ms-lg-2">
                         <a class="nav-link" id="nav-login" onclick="manageLoginUI()" href="#">
                             <i class="bi bi-person me-1"></i>Acceder
@@ -1010,6 +1015,263 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         PÁGINA AVISO LEGAL & PRIVACIDAD (P4)
+    ════════════════════════════════════════════ -->
+    <div class="page" id="page-legal">
+        <div class="container py-5">
+
+            <!-- Header -->
+            <span class="sec-tag">Práctica 4 — Marco Legal</span>
+            <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,48px); color:var(--verde); margin-bottom:8px;">
+                Aviso Legal & <em style="color:var(--verde2); font-style:italic;">Privacidad</em>
+            </h2>
+            <p style="font-size:11px; color:var(--muted); margin-bottom:40px;">
+                Información legal, privacidad de datos, derechos de autor y transparencia del sitio web de Verdanta AgriTech.
+            </p>
+
+            <!-- índice -->
+            <div style="background:var(--gris); border-radius:12px; padding:24px; margin-bottom:40px; border-left:4px solid var(--dorado);">
+                <p style="font-size:10px; letter-spacing:2px; color:var(--dorado); text-transform:uppercase; margin-bottom:12px;">Contenido</p>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="#legal-privacidad" style="font-size:12px; color:var(--verde2); text-decoration:none;">1. Privacidad de datos y seguridad</a>
+                    <a href="#legal-propiedad" style="font-size:12px; color:var(--verde2); text-decoration:none;">2. Derechos de propiedad intelectual</a>
+                    <a href="#legal-requisitos" style="font-size:12px; color:var(--verde2); text-decoration:none;">3. Requisitos legales e identificadores de autoría</a>
+                    <a href="#legal-aviso" style="font-size:12px; color:var(--verde2); text-decoration:none;">4. Aviso de privacidad</a>
+                    <a href="#legal-transparencia" style="font-size:12px; color:var(--verde2); text-decoration:none;">5. Transparencia y responsabilidad</a>
+                </div>
+            </div>
+
+            <!-- ── 1. PRIVACIDAD DE DATOS ── -->
+            <div id="legal-privacidad" style="margin-bottom:48px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--dorado);">
+                    <div style="width:36px; height:36px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--dorado); font-size:16px; flex-shrink:0;">🔒</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); margin:0;">1. Privacidad de Datos y Seguridad</h3>
+                </div>
+                <p style="font-size:12px; color:var(--muted); line-height:1.9; margin-bottom:12px;">
+                    El sitio web de Verdanta AgriTech implementa las siguientes medidas de seguridad para proteger los datos de sus usuarios:
+                </p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🛡️ Base de datos — Supabase</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                La base de datos está alojada en Supabase (PostgreSQL), una plataforma que implementa cifrado en tránsito (TLS/HTTPS) y en reposo. El acceso a los datos está controlado mediante Row Level Security (RLS), que define políticas de lectura y escritura por tabla. Las credenciales de la BD nunca se exponen al usuario final — solo se utiliza la clave pública <em>anon key</em> que tiene permisos limitados.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🔑 Autenticación — Supabase Auth</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                El sistema de inicio de sesión utiliza Supabase Auth, que maneja el almacenamiento de contraseñas con hashing seguro (bcrypt). Las sesiones se gestionan mediante tokens JWT con expiración automática. Las contraseñas nunca se almacenan en texto plano ni se transmiten sin cifrado.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🌐 Transporte seguro — HTTPS</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                El sitio está servido exclusivamente mediante HTTPS a través de GitHub Pages, que incluye certificados SSL/TLS automáticos. Toda comunicación entre el navegador del usuario y el servidor está cifrada, previniendo ataques de tipo man-in-the-middle.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">📋 Datos recolectados</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                El sitio recolecta únicamente: correo electrónico y contraseña (para autenticación) y respuestas de la encuesta de satisfacción (sensores, comentarios). No se recopilan datos de geolocalización, cookies de rastreo, ni información financiera. No se comparten datos con terceros.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── 2. PROPIEDAD INTELECTUAL ── -->
+            <div id="legal-propiedad" style="margin-bottom:48px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--dorado);">
+                    <div style="width:36px; height:36px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--dorado); font-size:16px; flex-shrink:0;">©</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); margin:0;">2. Derechos de Propiedad Intelectual</h3>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Origen del concepto de marca</p>
+                    <p style="font-size:12px; color:var(--muted); line-height:1.9; margin-bottom:0;">
+                        La identidad de marca de Verdanta AgriTech surgió a partir de una clase de Emprendimiento, en la que se trabajaron fundamentos de branding: selección de paleta de colores, tipografía, valores de marca y posicionamiento. A partir de ese ejercicio académico nació la idea de crear una empresa de tecnología agrícola que diera soporte comercial al proyecto escolar HydroLeaf Pro, desarrollado para la materia de Sistemas Embebidos en el CETI Plantel Río Santiago.
+                    </p>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Diseño del sitio web</p>
+                    <p style="font-size:12px; color:var(--muted); line-height:1.9; margin-bottom:0;">
+                        El diseño visual del sitio web fue creado de manera original por Bania Natalia Luna Pazos con asistencia de inteligencia artificial (Claude de Anthropic). La paleta de colores (verde oscuro #0D1A12, verde medio #1A5C36 y verde brillante #3DDC6E) fue seleccionada para evocar naturaleza, tecnología y crecimiento, en línea con el giro agrícola de la empresa. La tipografía Cormorant Garamond (títulos) y DM Mono (cuerpo) fueron elegidas para combinar elegancia y carácter técnico. No se utilizaron plantillas de terceros — el código HTML, CSS y JavaScript fue escrito desde cero.
+                    </p>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Logotipo de la marca</p>
+                    <p style="font-size:12px; color:var(--muted); line-height:1.9; margin-bottom:0;">
+                        El logotipo de Verdanta AgriTech consiste en la letra "V" estilizada en la tipografía Cormorant Garamond acompañada del nombre completo "Verdanta". Fue diseñado con asistencia de inteligencia artificial y desarrollado por la alumna Bania Natalia Luna Pazos. El concepto visual refleja el nombre de la marca, derivado del latín <em>viridis</em> (verde), en alusión a la agricultura sostenible.
+                    </p>
+                </div>
+
+                <div style="background:rgba(61,220,110,0.05); border:1px solid rgba(61,220,110,0.2); border-radius:8px; padding:16px;">
+                    <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                        <strong style="color:var(--verde2);">Aviso de derechos:</strong> Todo el contenido de este sitio web — textos, diseño, código fuente y elementos visuales — es propiedad de Verdanta AgriTech / Bania Natalia Luna Pazos, salvo los recursos de terceros que se mencionan en la sección 5. Queda prohibida su reproducción total o parcial sin autorización expresa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ── 3. REQUISITOS LEGALES ── -->
+            <div id="legal-requisitos" style="margin-bottom:48px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--dorado);">
+                    <div style="width:36px; height:36px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--dorado); font-size:16px; flex-shrink:0;">📄</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); margin:0;">3. Requisitos Legales e Identificadores de Autoría</h3>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px;">Identificadores de autoría</p>
+                            <table style="width:100%; font-size:11px; border-collapse:collapse;">
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Autora:</td><td style="padding:6px 8px; color:var(--texto);">Bania Natalia Luna Pazos</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">No. Control:</td><td style="padding:6px 8px; color:var(--texto);">22300049</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Institución:</td><td style="padding:6px 8px; color:var(--texto);">CETI Plantel Río Santiago</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Carrera:</td><td style="padding:6px 8px; color:var(--texto);">Desarrollo de Software</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Grupo:</td><td style="padding:6px 8px; color:var(--texto);">8°A1</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Materia:</td><td style="padding:6px 8px; color:var(--texto);">Programación Web 2</td></tr>
+                                <tr><td style="padding:6px 0; color:var(--muted); font-weight:600;">Año:</td><td style="padding:6px 8px; color:var(--texto);">2026</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px;">Información de contacto</p>
+                            <table style="width:100%; font-size:11px; border-collapse:collapse;">
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Empresa:</td><td style="padding:6px 8px; color:var(--texto);">Verdanta AgriTech</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Email:</td><td style="padding:6px 8px; color:var(--texto);">hydroleaf2620@gmail.com</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Teléfono:</td><td style="padding:6px 8px; color:var(--texto);">332 041 66 81</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Ubicación:</td><td style="padding:6px 8px; color:var(--texto);">CETI Río Santiago, Tonalá, Jalisco</td></tr>
+                                <tr style="border-bottom:1px solid #ddd;"><td style="padding:6px 0; color:var(--muted); font-weight:600;">Sitio web:</td><td style="padding:6px 8px;"><a href="https://ban-luna.github.io/Verdanta/" style="color:var(--dorado); font-size:10px;" target="_blank">ban-luna.github.io/Verdanta</a></td></tr>
+                                <tr><td style="padding:6px 0; color:var(--muted); font-weight:600;">Horario:</td><td style="padding:6px 8px; color:var(--texto);">Lunes a Viernes 8:00–16:00</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px; background:var(--verde); border-radius:8px; padding:20px; color:var(--crema);">
+                    <p style="font-size:11px; font-weight:600; color:var(--dorado); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Aviso legal</p>
+                    <p style="font-size:11px; line-height:1.9; margin:0; color:#aacfb5;">
+                        Este sitio web fue desarrollado con fines académicos en el marco de la materia Programación Web 2 del CETI Plantel Río Santiago. El contenido, precios y productos mostrados son de carácter ilustrativo y no constituyen una oferta comercial real. Verdanta AgriTech es una empresa ficticia creada para fines educativos. La autora no asume responsabilidad por el uso indebido de la información aquí contenida.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ── 4. AVISO DE PRIVACIDAD ── -->
+            <div id="legal-aviso" style="margin-bottom:48px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--dorado);">
+                    <div style="width:36px; height:36px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--dorado); font-size:16px; flex-shrink:0;">🔐</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); margin:0;">4. Aviso de Privacidad</h3>
+                </div>
+
+                <div style="background:var(--gris); border-radius:12px; padding:28px; font-size:11px; color:var(--muted); line-height:2;">
+                    <p style="font-weight:600; color:var(--verde); font-size:12px; margin-bottom:16px;">AVISO DE PRIVACIDAD — Verdanta AgriTech</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Responsable del tratamiento de datos:</strong><br>
+                    Bania Natalia Luna Pazos, con número de control 22300049, estudiante del CETI Plantel Río Santiago, es responsable del tratamiento de los datos personales recabados a través del sitio web https://ban-luna.github.io/Verdanta/ (en adelante, "el Sitio").</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Datos personales que se recaban:</strong><br>
+                    El Sitio puede recabar los siguientes datos personales: (a) correo electrónico y contraseña, al momento de registrarse o iniciar sesión; (b) respuestas a la encuesta de satisfacción, de carácter opcional y anónimo.</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Finalidad del tratamiento:</strong><br>
+                    Los datos personales recabados serán utilizados para las siguientes finalidades primarias: permitir el acceso a funcionalidades del Sitio mediante autenticación; mejorar la experiencia del usuario a partir de los resultados de la encuesta; y evaluar el nivel de satisfacción con el sistema HydroLeaf Pro.</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Transferencia de datos:</strong><br>
+                    Los datos personales no serán transferidos a terceros sin consentimiento previo del titular, salvo en los casos previstos por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP). Los datos se almacenan en Supabase (supabase.com), plataforma que cumple con estándares internacionales de seguridad (SOC 2 Type II, ISO 27001).</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Derechos ARCO:</strong><br>
+                    El titular de los datos tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales (Derechos ARCO), conforme a lo establecido en la LFPDPPP. Para ejercer estos derechos, puede contactarnos al correo: hydroleaf2620@gmail.com</p>
+
+                    <p style="margin-bottom:12px;"><strong style="color:var(--verde2);">Uso de cookies:</strong><br>
+                    El Sitio no utiliza cookies de rastreo ni publicidad. Supabase Auth puede generar tokens de sesión almacenados en el navegador (localStorage) con el único propósito de mantener la sesión activa del usuario.</p>
+
+                    <p style="margin-bottom:0;"><strong style="color:var(--verde2);">Cambios al aviso de privacidad:</strong><br>
+                    El presente aviso de privacidad puede ser modificado. Cualquier cambio será notificado a través del propio Sitio. Última actualización: junio de 2026.</p>
+                </div>
+            </div>
+
+            <!-- ── 5. TRANSPARENCIA ── -->
+            <div id="legal-transparencia" style="margin-bottom:48px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--dorado);">
+                    <div style="width:36px; height:36px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--dorado); font-size:16px; flex-shrink:0;">✨</div>
+                    <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); margin:0;">5. Transparencia y Responsabilidad</h3>
+                </div>
+
+                <p style="font-size:12px; color:var(--muted); line-height:1.9; margin-bottom:20px;">
+                    En cumplimiento con los principios de transparencia, se declara el uso de los siguientes recursos y herramientas de terceros en el desarrollo de este sitio web:
+                </p>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid var(--dorado); height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🤖 Inteligencia Artificial — Claude (Anthropic)</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                Se utilizó Claude (claude.ai), asistente de IA de Anthropic, como herramienta de apoyo en el desarrollo del sitio web. La IA colaboró en la generación del código HTML, CSS y JavaScript, la integración con Supabase, la redacción de contenidos y la estructuración del diseño. La dirección creativa, las decisiones de diseño y la revisión final fueron realizadas por la autora.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid var(--verde2); height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🎨 Clase de Emprendimiento — CETI</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                El concepto de marca Verdanta AgriTech fue desarrollado originalmente en la clase de Emprendimiento del CETI, donde se trabajaron los fundamentos del branding: identidad visual, paleta de colores, tipografía y posicionamiento de marca. Ese trabajo académico sirvió como base para la creación de la empresa ficticia que da contexto a este proyecto web.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid "#3DDC6E"; height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">📦 Bootstrap 5 — The Bootstrap Team</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                Se utilizó Bootstrap 5.3.3 como framework CSS para el diseño responsivo. Bootstrap es software de código abierto distribuido bajo licencia MIT. Créditos: © 2011-2024 The Bootstrap Authors. Fuente: getbootstrap.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid var(--verde); height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🗄️ Supabase — Supabase Inc.</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                La base de datos y el sistema de autenticación se implementaron usando Supabase, plataforma de código abierto bajo licencia Apache 2.0. Créditos: © Supabase Inc. Fuente: supabase.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid var(--muted); height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🔤 Google Fonts</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                Las tipografías Cormorant Garamond (Christian Thalmann) y DM Mono (Colophon Foundry) se obtuvieron de Google Fonts, distribuidas bajo licencia SIL Open Font License. Fuente: fonts.google.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="background:var(--gris); border-radius:8px; padding:20px; border-left:3px solid var(--muted); height:100%;">
+                            <p style="font-size:11px; font-weight:600; color:var(--verde2); margin-bottom:8px;">🖼️ Imagen del HydroLeaf Pro</p>
+                            <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                                La ilustración del sistema HydroLeaf Pro que aparece en la página de inicio fue creada por la autora como parte del proyecto escolar de la materia Sistemas Embebidos del CETI Plantel Río Santiago. Es propiedad intelectual de Bania Natalia Luna Pazos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:24px; background:rgba(61,220,110,0.05); border:1px solid rgba(61,220,110,0.2); border-radius:8px; padding:16px;">
+                    <p style="font-size:11px; color:var(--muted); line-height:1.8; margin:0;">
+                        <strong style="color:var(--verde2);">Declaración de originalidad:</strong> El presente sitio web no está basado en ninguna plantilla comercial o de terceros. Todo el código fue escrito de manera original para este proyecto académico con el apoyo de herramientas de inteligencia artificial, cuyo uso queda declarado en este apartado conforme a los principios de transparencia académica.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 
