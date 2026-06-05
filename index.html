@@ -589,7 +589,8 @@
                                 Inicio de Sesión
                             </h2>
                             <input type="email" id="email" class="vd-input" placeholder="Correo electrónico">
-                            <input type="password" id="pass" class="vd-input" placeholder="Contraseña">
+                            <input type="password" id="password" class="vd-input" placeholder="Contraseña">
+                            <div id="login-error" style="display:none; font-size:11px; color:#c62828; margin-bottom:8px; text-align:left;"></div>
                             <button class="btn-primary-vd" onclick="handleAuth('in')">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>Entrar
                             </button>
@@ -1521,7 +1522,11 @@
         if (type === 'in') {
             const email    = emailEl?.value;
             const password = passEl?.value;
-            if (!email || !password) { alert('Ingresa correo y contraseña'); return; }
+            if (!email || !password) {
+                const errEl = document.getElementById('login-error');
+                if(errEl){ errEl.style.display='block'; errEl.textContent='⚠️ Ingresa correo y contraseña'; }
+                return;
+            }
             const { data, error } = await sb.auth.signInWithPassword({ email, password });
             if (error) {
                 // Si no existe, registrar automáticamente
