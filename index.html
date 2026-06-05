@@ -241,6 +241,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" id="nav-carrito" onclick="verCarrito()" href="#" style="position:relative;">
+                            <i class="bi bi-cart3 me-1"></i>Carrito
+                            <span id="cart-count" style="position:absolute; top:2px; right:-4px; background:var(--dorado); color:var(--verde); font-size:9px; font-weight:700; border-radius:50%; width:16px; height:16px; display:none; align-items:center; justify-content:center; line-height:16px; text-align:center;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="nav-legal" onclick="goTo('legal')" href="#">
                             <i class="bi bi-shield-check me-1"></i>Aviso Legal
                         </a>
@@ -400,7 +406,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Kit Básico</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Contenedor + ESP32 + 1 Sensor de temperatura.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$1,200 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Kit Básico', 1200)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -412,7 +418,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Kit HydroLeaf Pro</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Full Pack: 4 Temp + pH + LCD + Nivel de agua.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$1,950 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Kit HydroLeaf Pro', 1950)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -423,7 +429,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Plántulas</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Lechuga Roja Romana — Pack de 50 semillas.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$85 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Plántulas', 85)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -434,7 +440,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Solución Nutritiva</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Soluponics® A+B Lechuga — rinde 500L.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$350 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Solución Nutritiva', 350)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -445,7 +451,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Macetas Hidropónicas</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Pack de 3 macetas con sustrato inerte incluido.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$120 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Macetas Hidropónicas', 120)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -456,7 +462,7 @@
                         <h5 style="color:var(--verde2); font-size:15px;">Kit Mantenimiento</h5>
                         <p style="font-size:12px; margin:10px 0; color:var(--muted);">Solución buffer pH 4.0 y 7.0 + manguera de repuesto.</p>
                         <p style="font-weight:bold; font-size:18px; color:var(--verde);">$180 MXN</p>
-                        <button class="btn-primary-vd" style="font-size:10px;">
+                        <button class="btn-primary-vd" style="font-size:10px;" onclick="agregarCarrito('Kit Mantenimiento', 180)">
                             <i class="bi bi-cart-plus me-1"></i>Comprar
                         </button>
                     </div>
@@ -1570,6 +1576,44 @@
             cargarProductosAPI();
         }
     });
+
+    // ── CARRITO ──────────────────────────────────────────────
+    let carrito = [];
+
+    function agregarCarrito(nombre, precio) {
+        carrito.push({ nombre, precio });
+        const count = document.getElementById('cart-count');
+        count.style.display = 'flex';
+        count.textContent = carrito.length;
+
+        const toast = document.createElement('div');
+        toast.textContent = `🛒 ${nombre} agregado al carrito`;
+        toast.style.cssText = `position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+            background:var(--verde); color:#fff; padding:12px 24px; border-radius:8px;
+            font-size:12px; z-index:9999; box-shadow:0 4px 16px rgba(0,0,0,0.2);`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    }
+
+    function verCarrito() {
+        if (carrito.length === 0) {
+            const toast = document.createElement('div');
+            toast.textContent = '🛒 Tu carrito está vacío';
+            toast.style.cssText = `position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+                background:#555; color:#fff; padding:12px 24px; border-radius:8px; font-size:12px; z-index:9999;`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+            return;
+        }
+        const total = carrito.reduce((sum, p) => sum + p.precio, 0);
+        const lista = carrito.map(p => `• ${p.nombre} — $${p.precio} MXN`).join('\n');
+        if (confirm(`🛒 Carrito (${carrito.length} producto${carrito.length>1?'s':''}):\n\n${lista}\n\nTotal: $${total} MXN\n\n¿Vaciar carrito?`)) {
+            carrito = [];
+            const count = document.getElementById('cart-count');
+            count.style.display = 'none';
+            count.textContent = '0';
+        }
+    }
     </script>
 
 </body>
